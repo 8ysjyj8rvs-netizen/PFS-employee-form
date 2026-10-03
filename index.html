@@ -210,131 +210,12 @@
 <form id="empForm">
 
   <div class="section">
-    <div class="section-title">Personal Details</div>
-    <div class="field"><label>Surname</label><input type="text" name="surname" required></div>
-    <div class="field"><label>First Names</label><input type="text" name="firstNames" required></div>
-    <div class="field"><label>Preferred Name <span class="opt">(optional)</span></label><input type="text" name="preferredName"></div>
-    <div class="field"><label>Job Title</label><input type="text" name="jobTitle" required></div>
-    <div class="field"><label>Start Date</label><input type="date" name="startDate" required></div>
-    <div class="field row2">
-      <div><label>Date of Birth</label><input type="date" name="dob" required></div>
-      <div><label>ID or Passport No.</label><input type="text" name="idNumber" required></div>
-    </div>
-    <div class="field"><label>Place of Birth</label><input type="text" name="placeOfBirth" required></div>
-    <div class="field"><label>Email Address</label><input type="email" name="email" required></div>
-    <div class="field row2">
-      <div><label>Cellphone Number</label><input type="tel" name="cellphone" required></div>
-      <div><label>Tax Number</label><input type="text" name="taxNumber" required></div>
-    </div>
-    <div class="field row2">
-      <div><label>Drivers License Code <span class="opt">(if applicable)</span></label><input type="text" name="licenseCode"></div>
-      <div><label>License Expiry Date <span class="opt">(if applicable)</span></label><input type="date" name="licenseExpiry"></div>
-    </div>
-    <div class="field row2">
-      <div><label>Marital Status</label><input type="text" name="maritalStatus" required></div>
-      <div><label>Name of Spouse <span class="opt">(if applicable)</span></label><input type="text" name="spouseName"></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Address Details</div>
-    <div class="field"><label>Physical Address</label><textarea name="physicalAddress" required></textarea></div>
-    <div class="field"><label>Postal Address</label><textarea name="postalAddress" required></textarea></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Bank Details</div>
-    <div class="field"><label>Account Holder Name</label><input type="text" name="accountHolder" required></div>
-    <div class="field"><label>Bank Name</label><input type="text" name="bankName" required></div>
-    <div class="field"><label>Account Type</label><input type="text" name="accountType" required></div>
-    <div class="field"><label>Account Number</label><input type="text" name="accountNumber" required></div>
-    <div class="field"><label>Branch Code</label><input type="text" name="branchCode" required></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Medical Details</div>
-    <div class="field row2">
-      <div><label>Medical Aid Name <span class="opt">(if applicable)</span></label><input type="text" name="medicalAidName"></div>
-      <div><label>Medical Aid Number <span class="opt">(if applicable)</span></label><input type="text" name="medicalAidNumber"></div>
-    </div>
-    <div class="field">
-      <label>Do you have a chronic condition?</label>
-      <div class="radio-group">
-        <label><input type="radio" name="chronic" value="Yes"> Yes</label>
-        <label><input type="radio" name="chronic" value="No" checked> No</label>
-      </div>
-      <input type="text" name="chronicDetails" placeholder="Details, if yes">
-    </div>
-    <div class="field">
-      <label>Do you have any allergies?</label>
-      <div class="radio-group">
-        <label><input type="radio" name="allergies" value="Yes"> Yes</label>
-        <label><input type="radio" name="allergies" value="No" checked> No</label>
-      </div>
-      <input type="text" name="allergyDetails" placeholder="Details, if yes">
-    </div>
-    <div class="field"><label>Other Medical Conditions <span class="opt">(if applicable)</span></label><textarea name="otherMedical"></textarea></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Language Proficiency</div>
-    <div class="field">
-      <label>First / Home Language</label>
-      <input type="text" name="lang1Name" placeholder="Language" required style="margin-bottom:6px;">
-      <div class="row2">
-        <input type="text" name="lang1Read" placeholder="Read" required>
-        <input type="text" name="lang1Write" placeholder="Write" required>
-      </div>
-      <input type="text" name="lang1Speak" placeholder="Speak" required style="margin-top:6px;">
-    </div>
-    <div class="field">
-      <label>Second Language <span class="opt">(if applicable)</span></label>
-      <input type="text" name="lang2Name" placeholder="Language" style="margin-bottom:6px;">
-      <div class="row2">
-        <input type="text" name="lang2Read" placeholder="Read">
-        <input type="text" name="lang2Write" placeholder="Write">
-      </div>
-      <input type="text" name="lang2Speak" placeholder="Speak" style="margin-top:6px;">
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Educational Qualification</div>
-    <div class="field"><label>Highest Qualification</label><input type="text" name="qualification" required></div>
-    <div class="field"><label>Institution</label><input type="text" name="institution" required></div>
-    <div class="field"><label>Other Certificates / Qualifications <span class="opt">(if applicable)</span></label><textarea name="otherCerts"></textarea></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Emergency Contact — Next of Kin 1</div>
-    <div class="field"><label>Name</label><input type="text" name="kin1Name" required></div>
-    <div class="field row2">
-      <div><label>Contact Number</label><input type="tel" name="kin1Contact" required></div>
-      <div><label>Relationship</label><input type="text" name="kin1Relationship" required></div>
-    </div>
-    <div class="field"><label>Physical Address</label><textarea name="kin1Address" required></textarea></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Emergency Contact — Next of Kin 2</div>
-    <div class="field"><label>Name</label><input type="text" name="kin2Name" required></div>
-    <div class="field row2">
-      <div><label>Contact Number</label><input type="tel" name="kin2Contact" required></div>
-      <div><label>Relationship</label><input type="text" name="kin2Relationship" required></div>
-    </div>
-    <div class="field"><label>Physical Address</label><textarea name="kin2Address" required></textarea></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Declaration</div>
-    <div class="field">
-      <div class="checkbox-line">
-        <input type="checkbox" id="declaration" required>
-        <label for="declaration" style="margin:0; font-weight:400;">I declare that the information given by me in this form is true and correct in every respect.</label>
-      </div>
-    </div>
-    <div class="field"><label>Full Name (signature)</label><input type="text" name="signatureName" required></div>
-    <div class="field"><label>Date</label><input type="date" name="signDate" required></div>
+    <div class="section-title">Sizes</div>
+    <div class="field"><label>Full Name</label><input type="text" name="fullName" required></div>
+    <div class="field"><label>Overall Pants</label><input type="text" name="overallPants" required></div>
+    <div class="field"><label>Jacket</label><input type="text" name="jacket" required></div>
+    <div class="field"><label>T-shirt</label><input type="text" name="tshirt" required></div>
+    <div class="field"><label>Safety Boots <span class="opt">(if required)</span></label><input type="text" name="safetyBoots"></div>
   </div>
 
   <div class="submit-bar">
@@ -448,67 +329,14 @@ async function generateAndSavePdf(formEl) {
   doc.text('PFS — Employee Personal Details', marginX, y);
   y += 24;
 
-  heading('Personal Details');
-  line('Surname', get('surname'));
-  line('First Names', get('firstNames'));
-  line('Preferred Name', get('preferredName'));
-  line('Job Title', get('jobTitle'));
-  line('Start Date', get('startDate'));
-  line('Date of Birth', get('dob'));
-  line('ID / Passport No.', get('idNumber'));
-  line('Place of Birth', get('placeOfBirth'));
-  line('Email Address', get('email'));
-  line('Cellphone Number', get('cellphone'));
-  line('Tax Number', get('taxNumber'));
-  line('Drivers License Code', get('licenseCode'));
-  line('License Expiry Date', get('licenseExpiry'));
-  line('Marital Status', get('maritalStatus'));
-  line('Name of Spouse', get('spouseName'));
+  heading('Sizes');
+  line('Full Name', get('fullName'));
+  line('Overall Pants', get('overallPants'));
+  line('Jacket', get('jacket'));
+  line('T-shirt', get('tshirt'));
+  line('Safety Boots', get('safetyBoots'));
 
-  heading('Address Details');
-  line('Physical Address', get('physicalAddress'));
-  line('Postal Address', get('postalAddress'));
-
-  heading('Bank Details');
-  line('Account Holder Name', get('accountHolder'));
-  line('Bank Name', get('bankName'));
-  line('Account Type', get('accountType'));
-  line('Account Number', get('accountNumber'));
-  line('Branch Code', get('branchCode'));
-
-  heading('Medical Details');
-  line('Medical Aid Name', get('medicalAidName'));
-  line('Medical Aid Number', get('medicalAidNumber'));
-  line('Chronic Condition', get('chronic') + (get('chronicDetails') ? ' — ' + get('chronicDetails') : ''));
-  line('Allergies', get('allergies') + (get('allergyDetails') ? ' — ' + get('allergyDetails') : ''));
-  line('Other Medical Conditions', get('otherMedical'));
-
-  heading('Language Proficiency');
-  line('First / Home Language', [get('lang1Name'), get('lang1Read') && 'Read: ' + get('lang1Read'), get('lang1Write') && 'Write: ' + get('lang1Write'), get('lang1Speak') && 'Speak: ' + get('lang1Speak')].filter(Boolean).join('  |  '));
-  line('Second Language', [get('lang2Name'), get('lang2Read') && 'Read: ' + get('lang2Read'), get('lang2Write') && 'Write: ' + get('lang2Write'), get('lang2Speak') && 'Speak: ' + get('lang2Speak')].filter(Boolean).join('  |  '));
-
-  heading('Educational Qualification');
-  line('Highest Qualification', get('qualification'));
-  line('Institution', get('institution'));
-  line('Other Certificates', get('otherCerts'));
-
-  heading('Emergency Contact — Next of Kin 1');
-  line('Name', get('kin1Name'));
-  line('Contact Number', get('kin1Contact'));
-  line('Relationship', get('kin1Relationship'));
-  line('Physical Address', get('kin1Address'));
-
-  heading('Emergency Contact — Next of Kin 2');
-  line('Name', get('kin2Name'));
-  line('Contact Number', get('kin2Contact'));
-  line('Relationship', get('kin2Relationship'));
-  line('Physical Address', get('kin2Address'));
-
-  heading('Declaration');
-  line('Declared true and correct by', get('signatureName'));
-  line('Date', get('signDate'));
-
-  const filenameSafe = (get('surname') + '_' + get('firstNames')).replace(/[^a-z0-9]+/gi, '_') || 'employee_details';
+  const filenameSafe = (get('fullName')).replace(/[^a-z0-9]+/gi, '_') || 'size_request';
   const pdfBlob = doc.output('blob');
 
   try {
