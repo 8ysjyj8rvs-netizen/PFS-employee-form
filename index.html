@@ -341,7 +341,14 @@
         <label for="declaration" style="margin:0; font-weight:400;">I declare that the information given by me in this form is true and correct in every respect.</label>
       </div>
     </div>
-    <div class="field"><label>Full Name (signature)</label><input type="text" name="signatureName" required></div>
+    <div class="field"><label>Full Name (printed)</label><input type="text" name="signatureName" required></div>
+    <div class="field">
+      <label>Signature</label>
+      <canvas id="sigCanvas" style="border:1px solid var(--line); border-radius:6px; width:100%; height:150px; touch-action:none; display:block; background:#fff;"></canvas>
+      <div style="display:flex; justify-content:flex-end; margin-top:6px;">
+        <button type="button" id="clearSig" style="width:auto; padding:6px 14px; font-size:13px; background:var(--muted); color:#fff; border:none; border-radius:6px; cursor:pointer;">Clear</button>
+      </div>
+    </div>
     <div class="field"><label>Date</label><input type="date" name="signDate" required></div>
   </div>
 
@@ -373,9 +380,63 @@
     document.getElementById('inAppNotice').style.display = 'block';
   }
 })();
+let sigCanvas, sigCtx, sigHasDrawing = false, sigRectW = 0, sigRectH = 0, sigDrawing = false, sigLastX = 0, sigLastY = 0;
+function initSignaturePad() {
+  sigCanvas = document.getElementById('sigCanvas');
+  if (!sigCanvas) return;
+  const ratio = window.devicePixelRatio || 1;
+  const rect = sigCanvas.getBoundingClientRect();
+  sigRectW = rect.width; sigRectH = rect.height;
+  sigCanvas.width = rect.width * ratio;
+  sigCanvas.height = rect.height * ratio;
+  sigCtx = sigCanvas.getContext('2d');
+  sigCtx.scale(ratio, ratio);
+  sigCtx.lineWidth = 2;
+  sigCtx.lineCap = 'round';
+  sigCtx.strokeStyle = '#1c2024';
+  sigCtx.fillStyle = '#ffffff';
+  sigCtx.fillRect(0, 0, sigRectW, sigRectH);
+
+  function getPos(e) {
+    const r = sigCanvas.getBoundingClientRect();
+    return { x: e.clientX - r.left, y: e.clientY - r.top };
+  }
+  sigCanvas.addEventListener('pointerdown', (e) => {
+    sigDrawing = true;
+    sigHasDrawing = true;
+    const p = getPos(e);
+    sigLastX = p.x; sigLastY = p.y;
+    try { sigCanvas.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  sigCanvas.addEventListener('pointermove', (e) => {
+    if (!sigDrawing) return;
+    const p = getPos(e);
+    sigCtx.beginPath();
+    sigCtx.moveTo(sigLastX, sigLastY);
+    sigCtx.lineTo(p.x, p.y);
+    sigCtx.stroke();
+    sigLastX = p.x; sigLastY = p.y;
+  });
+  window.addEventListener('pointerup', () => { sigDrawing = false; });
+  const clearBtn = document.getElementById('clearSig');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      sigCtx.clearRect(0, 0, sigRectW, sigRectH);
+      sigCtx.fillRect(0, 0, sigRectW, sigRectH);
+      sigHasDrawing = false;
+    });
+  }
+}
+initSignaturePad();
+
 
 document.getElementById('empForm').addEventListener('submit', async function (e) {
   e.preventDefault();
+  if (sigCanvas && !sigHasDrawing) {
+    alert('Please sign in the signature box before downloading.');
+    return;
+  }
+
 
   if (window.__jspdfFailed || !window.jspdf || !window.jspdf.jsPDF) {
     alert('The PDF tool didn\'t finish loading (this can happen on a slow or restricted connection). Please check your internet connection and try again, or reload the page.');
@@ -520,6 +581,19 @@ async function generateAndSavePdf(formEl) {
 
   heading('Declaration');
   line('Declared true and correct by', get('signatureName'));
+  if (sigCanvas) {
+    if (y > 740) { doc.addPage(); y = 50; }
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9.5);
+    doc.text('Signature:', marginX, y);
+    y += 6;
+    try {
+      const sigData = sigCanvas.toDataURL('image/png');
+      doc.addImage(sigData, 'PNG', marginX, y, 150, 50);
+      y += 56;
+    } catch (e) { /* ignore */ }
+  }
+  
   line('Date', get('signDate'));
 
   const filenameSafe = (get('surname') + '_' + get('firstNames')).replace(/[^a-z0-9]+/gi, '_') || 'employee_details';
